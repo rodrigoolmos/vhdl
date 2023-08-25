@@ -1,0 +1,14 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'aurt_fisical_test.vhd',
+	'aurt_fisical_test_tb.vhd',
+	'uart.vhd'
+]
+[libraries.work]
+files = [
+	'aurt_fisical_test.vhd',
+	'aurt_fisical_test_tb.vhd',
+	'uart.vhd'
+]
+# auto-generated-end
