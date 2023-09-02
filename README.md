@@ -1,3 +1,3 @@
 # vhdl
 this repository contains diferent vhdl code
- this project is mean to store diferent vhdl functional code
+ this project is meant to store different vhdl functional codes
