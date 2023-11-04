@@ -106,6 +106,47 @@ begin
         wait until rising_edge(CLK);
         wait until rising_edge(CLK);
         
+        ena_write <= '1';
+        ena_read <= '0';
+        data_write <= x"10";
+        wait until rising_edge(CLK);
+        data_write <= x"11";
+        wait until rising_edge(CLK);
+        data_write <= x"12";
+        wait until rising_edge(CLK);
+        data_write <= x"13";
+        wait until rising_edge(CLK);
+        data_write <= x"14";
+        wait until rising_edge(CLK);
+        data_write <= x"15";
+        wait until rising_edge(CLK);
+        data_write <= x"16";
+        wait until rising_edge(CLK);
+        data_write <= x"17";
+        wait until rising_edge(CLK);
+        data_write <= x"18";
+        wait until rising_edge(CLK);
+        data_write <= x"19";
+        wait until rising_edge(CLK);
+        data_write <= x"1A";
+        wait until rising_edge(CLK);
+        data_write <= x"1B";
+        wait until rising_edge(CLK);
+        data_write <= x"1C";
+        wait until rising_edge(CLK);
+        data_write <= x"1D";
+        wait until rising_edge(CLK);
+        data_write <= x"1E";
+        wait until rising_edge(CLK);
+        data_write <= x"1F";
+        wait until rising_edge(CLK);
+        data_write <= x"20";
+        wait until rising_edge(CLK);
+        data_write <= x"30";
+        wait until rising_edge(CLK);
+        data_write <= x"40";
+        wait until rising_edge(CLK);
+        
         ena_read <= '1';
         ena_write <= '1';
         
