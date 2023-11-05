@@ -40,33 +40,37 @@ begin
     begin
         if nrst = '0' then
             write_addres <= 0;
-            read_addres  <= 0;
+            read_addres  <= addr_deep -1;
             fifo_size <= addr_deep;
         elsif rising_edge(clk) then
 
-            if ena_write = '1' and r_full = '0' then
+            if (ena_write = '1' and r_full = '0') or ( ena_write = '1' and ena_read = '1') then
                 if write_addres < addr_deep -1 then
                     write_addres <= write_addres + 1;
                 else
                     write_addres <= 0;
                 end if;
                 memory(write_addres) <= data_write;
-                fifo_size <= fifo_size - 1;
             end if;
 
-            if ena_read = '1' and r_empty = '0' then
+            if (ena_read = '1' and r_empty = '0') or ( ena_write = '1' and ena_read = '1') then
                 if read_addres < addr_deep -1 then
                     read_addres <= read_addres + 1;
                 else
                     read_addres <= 0;
                 end if;
-                data_read <= memory(read_addres);
-                
+            end if;
+            
+            if ena_read = '1' and ena_write = '0' and r_empty = '0' then
                 fifo_size <= fifo_size + 1;
+            elsif ena_read = '0' and ena_write = '1' and r_full = '0' then
+                fifo_size <= fifo_size - 1;
             end if;
             
         end if;
     end process;
+    
+    data_read <= memory(read_addres);
     
     r_full <= '1' when fifo_size = 0 else '0';
     r_empty <= '1' when fifo_size > (addr_deep - 1) else '0';
