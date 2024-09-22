@@ -73,7 +73,7 @@ begin
     data_read <= memory(read_addres);
     
     r_full <= '1' when fifo_size = 0 else '0';
-    r_empty <= '1' when fifo_size > (addr_deep - 1) else '0';
+    r_empty <= '0' when fifo_size < addr_deep else '1';
     
     full <= r_full;
     empty <= r_empty;
