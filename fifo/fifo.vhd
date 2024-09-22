@@ -8,7 +8,7 @@ use IEEE.numeric_std.all;
 entity fifo is
     generic(
         data_width : natural := 8;
-        addr_deep  :  natural := 128
+        addr_deep  :  natural := 8
     );
     port(
         CLK :        in     std_logic;
@@ -40,7 +40,7 @@ begin
     begin
         if nrst = '0' then
             write_addres <= 0;
-            read_addres  <= addr_deep -1;
+            read_addres  <= 0;
             fifo_size <= addr_deep;
         elsif rising_edge(clk) then
 
