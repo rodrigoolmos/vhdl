@@ -8,7 +8,7 @@ use IEEE.numeric_std.all;
 entity fifo is
     generic(
         data_width : natural := 8;
-        addr_deep  :  natural := 8
+        addr_deep  :  natural := 128
     );
     port(
         CLK :        in     std_logic;
