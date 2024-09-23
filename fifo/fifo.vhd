@@ -39,9 +39,7 @@ begin
     begin
         if nrst = '0' then
             write_addres <= 0;
-            read_addres  <= 0;
         elsif rising_edge(clk) then
-
             if (ena_write = '1' and r_full = '0') or ( ena_write = '1' and ena_read = '1') then
                 if write_addres < addr_deep -1 then
                     write_addres <= write_addres + 1;
@@ -50,7 +48,14 @@ begin
                 end if;
                 memory(write_addres) <= data_write;
             end if;
-
+        end if;
+    end process;
+    
+    process(clk, nrst)
+    begin
+        if nrst = '0' then
+            read_addres  <= 0;
+        elsif rising_edge(clk) then
             if (ena_read = '1' and r_empty = '0') or ( ena_write = '1' and ena_read = '1') then
                 if read_addres < addr_deep -1 then
                     read_addres <= read_addres + 1;
@@ -58,8 +63,6 @@ begin
                     read_addres <= 0;
                 end if;
             end if;
-            
-            
         end if;
     end process;
     
