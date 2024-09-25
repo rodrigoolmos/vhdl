@@ -17,6 +17,8 @@ architecture rtl of fifo_tb is
     signal ena_read :   std_logic;
     signal empty :      std_logic;
     signal full :       std_logic;
+    signal next_empty :      std_logic;
+    signal next_full :       std_logic;
     signal data_write : std_logic_vector(data_width -1 downto 0);
     signal data_read :  std_logic_vector(data_width -1 downto 0);
     
@@ -26,14 +28,16 @@ architecture rtl of fifo_tb is
             addr_deep  :  natural := 16
         );
         port(
-            CLK :        in     std_logic;
-            nrst :       in     std_logic;
-            ena_write :  in     std_logic;
-            ena_read :   in     std_logic;
-            empty :      out    std_logic;
-            full :       out    std_logic;
-            data_write : in     std_logic_vector(data_width -1 downto 0);
-            data_read :  out    std_logic_vector(data_width -1 downto 0)
+            CLK :           in     std_logic;
+            nrst :          in     std_logic;
+            ena_write :     in     std_logic;
+            ena_read :      in     std_logic;
+            empty :         out    std_logic;
+            full :          out    std_logic;
+            next_empty :    out    std_logic;
+            next_full :     out    std_logic;
+            data_write :    in     std_logic_vector(data_width -1 downto 0);
+            data_read :     out    std_logic_vector(data_width -1 downto 0)
         );
     end component fifo;
     
@@ -139,14 +143,16 @@ begin
     )
     port map
     (
-        CLK        => CLK ,
-        nrst       => nrst ,
-        ena_write  => ena_write ,
-        ena_read   => ena_read ,
-        empty      => empty ,
-        full       => full ,
-        data_write => data_write ,
-        data_read  => data_read
+        CLK             => CLK ,
+        nrst            => nrst ,
+        ena_write       => ena_write ,
+        ena_read        => ena_read ,
+        empty           => empty ,
+        full            => full ,
+        next_empty      => next_empty ,
+        next_full       => next_full ,
+        data_write      => data_write ,
+        data_read       => data_read
     );
 
 end architecture rtl;
