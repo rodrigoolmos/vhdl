@@ -47,190 +47,76 @@ begin
         wait until rising_edge(CLK);
         nrst <= '1';
         wait until rising_edge(CLK);
+        
+        -- test write
         ena_write <= '1';
-        data_write <= x"00";
-        wait until rising_edge(CLK);
-        data_write <= x"01";
-        wait until rising_edge(CLK);
-        data_write <= x"02";
-        wait until rising_edge(CLK);
-        data_write <= x"03";
-        wait until rising_edge(CLK);
-        data_write <= x"04";
-        wait until rising_edge(CLK);
-        data_write <= x"05";
-        wait until rising_edge(CLK);
-        data_write <= x"06";
-        wait until rising_edge(CLK);
-        data_write <= x"07";
-        wait until rising_edge(CLK);
-        data_write <= x"08";
-        wait until rising_edge(CLK);
-        data_write <= x"09";
-        wait until rising_edge(CLK);
-        data_write <= x"0A";
-        wait until rising_edge(CLK);
-        data_write <= x"0B";
-        wait until rising_edge(CLK);
-        data_write <= x"0C";
-        wait until rising_edge(CLK);
-        data_write <= x"0D";
-        wait until rising_edge(CLK);
-        data_write <= x"0E";
-        wait until rising_edge(CLK);
-        data_write <= x"0F";
-        wait until rising_edge(CLK);
-        data_write <= x"10";
-        wait until rising_edge(CLK);
-        data_write <= x"20";
-        wait until rising_edge(CLK);
-        data_write <= x"30";
-        wait until rising_edge(CLK);
-        ena_read <= '1';
+        for i in 0 to 15 loop
+            data_write <= std_logic_vector(to_unsigned(i + 10, 8));
+            wait until rising_edge(CLK);
+        end loop;
         ena_write <= '0';
         wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        wait until rising_edge(CLK);
-        
-        ena_write <= '1';
-        ena_read <= '0';
-        data_write <= x"10";
-        wait until rising_edge(CLK);
-        data_write <= x"11";
-        wait until rising_edge(CLK);
-        data_write <= x"12";
-        wait until rising_edge(CLK);
-        data_write <= x"13";
-        wait until rising_edge(CLK);
-        data_write <= x"14";
-        wait until rising_edge(CLK);
-        data_write <= x"15";
-        wait until rising_edge(CLK);
-        data_write <= x"16";
-        wait until rising_edge(CLK);
-        data_write <= x"17";
-        wait until rising_edge(CLK);
-        data_write <= x"18";
-        wait until rising_edge(CLK);
-        data_write <= x"19";
-        wait until rising_edge(CLK);
-        data_write <= x"1A";
-        wait until rising_edge(CLK);
-        data_write <= x"1B";
-        wait until rising_edge(CLK);
-        data_write <= x"1C";
-        wait until rising_edge(CLK);
-        data_write <= x"1D";
-        wait until rising_edge(CLK);
-        data_write <= x"1E";
-        wait until rising_edge(CLK);
-        data_write <= x"1F";
-        wait until rising_edge(CLK);
-        data_write <= x"20";
-        wait until rising_edge(CLK);
-        data_write <= x"30";
-        wait until rising_edge(CLK);
-        data_write <= x"40";
-        wait until rising_edge(CLK);
-        
+
+        -- test read
         ena_read <= '1';
-        ena_write <= '1';
-        
-        data_write <= x"00";
+        wait for period_time*16;
         wait until rising_edge(CLK);
-        data_write <= x"01";
-        wait until rising_edge(CLK);
-        data_write <= x"02";
-        wait until rising_edge(CLK);
-        data_write <= x"03";
-        wait until rising_edge(CLK);
-        data_write <= x"04";
-        wait until rising_edge(CLK);
-        data_write <= x"05";
-        wait until rising_edge(CLK);
-        data_write <= x"06";
-        wait until rising_edge(CLK);
-        data_write <= x"07";
-        wait until rising_edge(CLK);
-        data_write <= x"08";
-        wait until rising_edge(CLK);
-        data_write <= x"09";
-        wait until rising_edge(CLK);
-        data_write <= x"0A";
-        wait until rising_edge(CLK);
-        data_write <= x"0B";
-        wait until rising_edge(CLK);
-        data_write <= x"0C";
-        wait until rising_edge(CLK);
-        data_write <= x"0D";
-        wait until rising_edge(CLK);
-        data_write <= x"0E";
-        wait until rising_edge(CLK);
-        data_write <= x"0F";
-        wait until rising_edge(CLK);
-        data_write <= x"10";
-        wait until rising_edge(CLK);
-        data_write <= x"20";
-        wait until rising_edge(CLK);
-        data_write <= x"30";
-        wait until rising_edge(CLK);
-        
-        
-        ena_write <= '1';
         ena_read <= '0';
-        data_write <= x"00";
         wait until rising_edge(CLK);
-        data_write <= x"01";
-        wait until rising_edge(CLK);
-        data_write <= x"02";
-        wait until rising_edge(CLK);
-        data_write <= x"03";
-        wait until rising_edge(CLK);
-        data_write <= x"04";
-        wait until rising_edge(CLK);
-        data_write <= x"05";
-        wait until rising_edge(CLK);
-        data_write <= x"06";
-        wait until rising_edge(CLK);
-        data_write <= x"07";
-        wait until rising_edge(CLK);
-        data_write <= x"08";
-        wait until rising_edge(CLK);
-        data_write <= x"09";
-        wait until rising_edge(CLK);
-        data_write <= x"0A";
-        wait until rising_edge(CLK);
-        data_write <= x"0B";
-        wait until rising_edge(CLK);
-        data_write <= x"0C";
-        wait until rising_edge(CLK);
-        data_write <= x"0D";
-        wait until rising_edge(CLK);
-        data_write <= x"0E";
-        wait until rising_edge(CLK);
-        data_write <= x"0F";
-        wait until rising_edge(CLK);
-        data_write <= x"10";
-        wait until rising_edge(CLK);
-        data_write <= x"20";
-        wait until rising_edge(CLK);
-        data_write <= x"30";
-        wait until rising_edge(CLK);
+
         
+        -- test full
+        ena_write <= '1';
+        for i in 0 to 20 loop
+            data_write <= std_logic_vector(to_unsigned(i, 8));
+            wait until rising_edge(CLK);
+        end loop;
+        ena_write <= '0';
+        wait until rising_edge(CLK);
+
+        -- test empty
+        ena_read <= '1';
+        wait for period_time*20;
+        wait until rising_edge(CLK);
+        wait until rising_edge(CLK);
+        ena_read <= '0';
+        wait until rising_edge(CLK);
+
+        -- test write read simultanius
+        ena_write <= '1';
+        for i in 0 to 15 loop
+            data_write <= std_logic_vector(to_unsigned(i + 16, 8));
+            wait until rising_edge(CLK);
+        end loop;
+        ena_read <= '1';
+        for i in 0 to 31 loop
+            data_write <= std_logic_vector(to_unsigned(i + 32, 8));
+            wait until rising_edge(CLK);
+        end loop;
+        ena_write <= '0';
+        wait for period_time*16;
+        wait until rising_edge(CLK);
+        ena_read <= '0';
+        wait until rising_edge(CLK);
+
+        -- test write 16
+        ena_write <= '1';
+        for i in 0 to 15 loop
+            data_write <= std_logic_vector(to_unsigned(i + 64, 8));
+            wait until rising_edge(CLK);
+        end loop;
+        ena_write <= '0';
+        wait until rising_edge(CLK);
+
+        -- test read 16
+        ena_read <= '1';
+        wait for period_time*16;
+        wait until rising_edge(CLK);
+        ena_read <= '0';
+        wait until rising_edge(CLK);
+
+        wait for period_time*15;
+        wait until rising_edge(CLK);
         finished <= '1';
         wait;
     end process sim_time_proc;
@@ -247,6 +133,10 @@ begin
     end process clk_proc;
     
     u1: fifo
+    generic map(
+        data_width => 8,
+        addr_deep => 16
+    )
     port map
     (
         CLK        => CLK ,
