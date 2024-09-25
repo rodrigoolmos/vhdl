@@ -11,14 +11,16 @@ entity fifo is
         addr_deep  : natural := 128
     );
     port(
-        CLK :        in     std_logic;
-        nrst :       in     std_logic;
-        ena_write :  in     std_logic;
-        ena_read :   in     std_logic;
-        empty :      out    std_logic;
-        full :       out    std_logic;
-        data_write : in     std_logic_vector(data_width -1 downto 0);
-        data_read :  out    std_logic_vector(data_width -1 downto 0)
+        CLK :           in     std_logic;
+        nrst :          in     std_logic;
+        ena_write :     in     std_logic;
+        ena_read :      in     std_logic;
+        empty :         out    std_logic;
+        full :          out    std_logic;
+        next_empty :    out    std_logic;
+        next_full :     out    std_logic;
+        data_write :    in     std_logic_vector(data_width -1 downto 0);
+        data_read :     out    std_logic_vector(data_width -1 downto 0)
     );
 end entity fifo;
 
@@ -104,6 +106,8 @@ begin
     data_read <= memory(to_integer(read_addres));
     
     r_full <= '1' when fifo_size = 0 else '0';
+    next_full <= '1' when fifo_size = 1 else '0';
+    next_empty <= '1' when fifo_size = addr_deep - 1 else '0';
     r_empty <= '1' when fifo_size = addr_deep else '0';
     
     full <= r_full;
