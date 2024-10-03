@@ -14,6 +14,10 @@ architecture rtl of RGB_matrix_tb is
     port(
         CLK     : in    std_logic;
         NRST    : in    std_logic;
+        DEBUG   : in    std_logic;
+        data    : in    std_logic_vector(7 downto 0);
+        n_row   : out   std_logic_vector(7 downto 0);
+        n_col   : out   std_logic_vector(7 downto 0);
         RGB0    : out   std_logic_vector(2 downto 0);
         RGB1    : out   std_logic_vector(2 downto 0);
         ADDR    : out   std_logic_vector(4 downto 0);
@@ -26,6 +30,10 @@ end component;
     -- Signals to connect to UUT
 signal CLK     : std_logic := '0';
 signal NRST    : std_logic := '0';
+signal DEBUG   : std_logic;
+signal data    :  std_logic_vector(7 downto 0);
+signal n_row   :  std_logic_vector(7 downto 0);
+signal n_col   :  std_logic_vector(7 downto 0);
 signal RGB0    : std_logic_vector(2 downto 0);
 signal RGB1    : std_logic_vector(2 downto 0);
 signal ADDR    : std_logic_vector(4 downto 0);
@@ -38,6 +46,7 @@ begin
     sim_time_proc: process
     begin
         NRST <= '0';
+        DEBUG <= '1';
         wait for 10 us;
         wait until rising_edge(CLK);
         NRST <= '1';
@@ -65,6 +74,10 @@ begin
     port map (
         CLK     => CLK,
         NRST    => NRST,
+        DEBUG   => DEBUG,
+        data    => data,
+        n_row   => n_row,
+        n_col   => n_col,
         RGB0    => RGB0,
         RGB1    => RGB1,
         ADDR    => ADDR,
